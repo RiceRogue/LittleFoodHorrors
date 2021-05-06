@@ -8,7 +8,7 @@ public class CameraMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        moveSpeed = 1.2f;
+        moveSpeed = 4f;
     }
 
     // Update is called once per frame
