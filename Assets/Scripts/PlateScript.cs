@@ -32,7 +32,10 @@ public class PlateScript : MonoBehaviour
         if(finished == true)
         {
             timer += Time.deltaTime;
-            if(timer > 10)
+            //begins image timer
+            canvas.maxTime = 10;
+            canvas.reloading = true;
+            if (timer > canvas.maxTime)
             {
                 SceneManager.LoadScene("SampleScene");
             }
@@ -54,7 +57,7 @@ public class PlateScript : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        timer = 0;
+        finished = false;
 
     }
 

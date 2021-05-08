@@ -610,10 +610,10 @@ MonoBehaviour:
   Hamburger: {fileID: 1000011448446114, guid: 8155176e03f33f44884efb0dd767197c, type: 3}
   Sushi: {fileID: 1000012305856020, guid: bf960492e4c076c458d1ba649dc26577, type: 3}
   Taco: {fileID: 1000011323704582, guid: 927b358a489fa874780f1278268d7bfb, type: 3}
-  Donut: {fileID: 0}
-  Mochi: {fileID: 0}
-  Tempura: {fileID: 0}
-  Omelette: {fileID: 0}
+  Donut: {fileID: 1000011379175792, guid: 931dfc52fd271a846b05a6bf70694fca, type: 3}
+  Mochi: {fileID: 1000012087637210, guid: cc3c5a058e6bb634781860012b9aa683, type: 3}
+  Tempura: {fileID: 1000012244298164, guid: 3c2e7dbde68087547ae2eeca74dffec4, type: 3}
+  Omelette: {fileID: 1000012399270436, guid: 9bd75eed56fa9054984b2ba5678076ea, type: 3}
   timer: 0
   Flames: {fileID: 1654736843778140, guid: 78e8b38d431ddef4fa2994a3f2d6e2ff, type: 3}
   flameInstantiated: 0
@@ -2392,6 +2392,80 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87a32384fe2633648996ab825d5f4b5b, type: 3}
+--- !u!1 &1067821922
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1067821925}
+  - component: {fileID: 1067821924}
+  - component: {fileID: 1067821923}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1067821923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1067821922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.25943398, g: 0.7309105, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1067821924
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1067821922}
+  m_CullTransparentMesh: 0
+--- !u!224 &1067821925
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1067821922}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1473441587}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 7.71, y: -389.45}
+  m_SizeDelta: {x: 945.6316, y: 45.10524}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1073502663 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1000010917563242, guid: 6e2574af69e1ddd4497a11adb45777a1,
@@ -2976,6 +3050,10 @@ MonoBehaviour:
   recipeShown: 0
   recipeEnd: 0
   timer: 0
+  timerBar: {fileID: 1067821923}
+  maxTime: 0
+  timeLeft: 0
+  reloading: 0
 --- !u!4 &1357846846
 Transform:
   m_ObjectHideFlags: 0
@@ -3164,7 +3242,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 274, y: -459}
+  m_AnchoredPosition: {x: 145, y: -459}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1451888670
@@ -3357,6 +3435,7 @@ RectTransform:
   - {fileID: 584820721}
   - {fileID: 1451888669}
   - {fileID: 2033703249}
+  - {fileID: 1067821925}
   m_Father: {fileID: 1357846846}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4645,7 +4724,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 27, y: -459}
+  m_AnchoredPosition: {x: -102, y: -459}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2033703250
