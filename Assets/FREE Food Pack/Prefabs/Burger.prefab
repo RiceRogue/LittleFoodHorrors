@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 4000011445454492}
   - component: {fileID: 33000010003322670}
   - component: {fileID: 23000010489745992}
-  - component: {fileID: -6615986772455611889}
   - component: {fileID: -4360931329460752772}
+  - component: {fileID: -361887000866934792}
+  - component: {fileID: -584629970240141063}
   m_Layer: 8
   m_Name: Burger
   m_TagString: Untagged
@@ -81,20 +82,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &-6615986772455611889
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000011448446114}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.060356446
-  m_Height: 0.08755393
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.0000000055879354, z: 0}
 --- !u!54 &-4360931329460752772
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -111,3 +98,31 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &-361887000866934792
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000011448446114}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.12071289, y: 0.08755393, z: 0.120712586}
+  m_Center: {x: 0, y: 0.0000000055879354, z: 0}
+--- !u!114 &-584629970240141063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000011448446114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c6ed17d762efe449bfdaa6920d28c5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseOverColor: {fileID: 2100000, guid: 91941fa71491b23409eb0f414d93b886, type: 2}
+  originalColor: {fileID: 0}
+  originalPosition: {x: 0, y: 0, z: 0}

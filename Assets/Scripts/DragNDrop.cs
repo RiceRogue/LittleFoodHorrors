@@ -11,9 +11,16 @@ public class DragNDrop : MonoBehaviour
     private bool dragging = false;
     private float distance;
 
+    public Vector3 originalPosition;
+
     void Start()
     {
         originalColor = GetComponent<Renderer>().material;
+    }
+
+    private void Awake()
+    {
+        originalPosition = transform.position;
     }
 
     // Update is called once per frame
