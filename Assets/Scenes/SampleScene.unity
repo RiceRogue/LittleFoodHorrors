@@ -140,6 +140,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.7750545, y: 0.14701551, z: 1.7750543}
   m_Center: {x: 0, y: 0.004500922, z: 0.000000059604645}
+--- !u!114 &16477292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16477287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48a57ac1c796642488f7628493446886, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pot: {fileID: 330466258}
+  recipes: []
+  recipeIngredientNames: []
+  timer: 0
+  finished: 0
 --- !u!1001 &25594083
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -587,7 +604,11 @@ MonoBehaviour:
   originalList: []
   copy: []
   chosen: 
+  finalRecipe: 0
   Hamburger: {fileID: 1000011448446114, guid: 8155176e03f33f44884efb0dd767197c, type: 3}
+  timer: 0
+  Flames: {fileID: 1654736843778140, guid: 78e8b38d431ddef4fa2994a3f2d6e2ff, type: 3}
+  flameInstantiated: 0
 --- !u!65 &330466261
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -599,8 +620,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.643709, y: 0.1285584, z: 1.5339744}
-  m_Center: {x: 0.006080538, y: -0.358797, z: 0.031149626}
+  m_Size: {x: 1.643709, y: 0.24563944, z: 1.5339744}
+  m_Center: {x: 0.0060805483, y: -0.30025652, z: 0.031149626}
 --- !u!4 &330466265 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4297064017948486, guid: d15472a0ad9a62e49a54ad28cabd11cb,

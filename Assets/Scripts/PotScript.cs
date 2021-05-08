@@ -15,11 +15,17 @@ public class PotScript : MonoBehaviour
 
     public bool finalRecipe;
     public GameObject Hamburger;
+    public float timer;
+
+    public GameObject Flames;
+    public bool flameInstantiated;
+
     // Start is called before the first frame update
     void Start()
     {
         ingredients = GameObject.FindGameObjectsWithTag("Ingredients");
         finalRecipe = false;
+        flameInstantiated = false;
         recipes = new string[3] { "Hamburger", "Sushi", "Taco" };
         recipeIngredientNames = new List<string>();
         chosen = recipes[Random.Range(0, recipes.Length)];
@@ -27,8 +33,9 @@ public class PotScript : MonoBehaviour
         if (chosen == "Hamburger")
         {
             recipeIngredientNames = new List<string> { "Cheese", "Tomato", "Steak", "Toast" };
+            copy = new List<string> { "Cheese", "Tomato", "Steak", "Toast" };
         }
-        copy = recipeIngredientNames;
+        
 
     }
 
@@ -41,18 +48,51 @@ public class PotScript : MonoBehaviour
         //No gravity or rigidbody for the pot, due to erratic movement due to physics engine
         if(recipeIngredientNames.Count == 0 && finalRecipe == false)
         {
+            timer += Time.deltaTime;
             //All Ingredients are currently colliding with the pot;
-            foreach(GameObject go in originalList)
+            if (flameInstantiated == false)
             {
-                DragNDrop dropScript = go.GetComponent<DragNDrop>();
-                go.transform.position = dropScript.originalPosition;
-                
+                for (int i = 0; i < 3; i++)
+                {
+                    Instantiate(Flames, transform.position + new Vector3(i - 1, -2, 0), transform.rotation);
+                }
+                flameInstantiated = true;
             }
-
-            if (chosen == "Hamburger")
+            if (timer > 30)
             {
-                Instantiate(Hamburger, transform.position + new Vector3(0, 1.5f, 0), Hamburger.transform.rotation);
-                finalRecipe = true;
+                foreach (GameObject go in originalList)
+                {
+                    DragNDrop dropScript = go.GetComponent<DragNDrop>();
+                    go.transform.position = dropScript.originalPosition;
+
+                }
+
+                if (chosen == "Hamburger")
+                {
+                    foreach(string s in copy)
+                    {
+                        GameObject go = GameObject.Find(s);
+                        Destroy(go);
+                        
+                    }
+                    GameObject[] flames = GameObject.FindGameObjectsWithTag("Fire");
+                    foreach(GameObject f in flames)
+                    {
+                        Destroy(f);
+                    }
+                    Instantiate(Hamburger, transform.position + new Vector3(0, 1.5f, 0), Hamburger.transform.rotation);
+                    finalRecipe = true;
+                }
+            }
+        } 
+        
+        if(recipeIngredientNames.Count > 0)
+        {
+            flameInstantiated = false;
+            GameObject[] flames = GameObject.FindGameObjectsWithTag("Fire");
+            foreach (GameObject f in flames)
+            {
+                Destroy(f);
             }
         }
         
@@ -64,6 +104,24 @@ public class PotScript : MonoBehaviour
         foreach (string name in recipeIngredientNames)
         {
             if (name == collision.gameObject.name){
+                removing = true;
+            }
+
+        }
+
+        if (removing)
+        {
+            recipeIngredientNames.Remove(collision.gameObject.name);
+        }
+    }
+
+    void OnCollisionStay(Collision collision)
+    {
+        bool removing = false;
+        foreach (string name in recipeIngredientNames)
+        {
+            if (name == collision.gameObject.name)
+            {
                 removing = true;
             }
 
