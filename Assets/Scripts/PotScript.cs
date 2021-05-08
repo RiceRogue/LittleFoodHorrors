@@ -16,6 +16,14 @@ public class PotScript : MonoBehaviour
 
     public bool finalRecipe;
     public GameObject Hamburger;
+    public GameObject Sushi;
+    public GameObject Taco;
+    public GameObject Donut;
+    public GameObject Mochi;
+    public GameObject Tempura;
+    public GameObject Omelette;
+    
+
     public float timer;
 
     public GameObject Flames;
@@ -31,16 +39,41 @@ public class PotScript : MonoBehaviour
         ingredients = GameObject.FindGameObjectsWithTag("Ingredients");
         finalRecipe = false;
         flameInstantiated = false;
-        recipes = new string[3] { "Hamburger", "Sushi", "Taco" };
+        recipes = new string[7] { "Hamburger", "Sushi", "Taco", "Donut", "Tempura", "Omelette", "Mochi" };
         recipeIngredientNames = new List<string>();
         chosen = recipes[Random.Range(0, recipes.Length)];
-        chosen = "Hamburger";
+        
 
         canvas = canvasManager.GetComponent<CanvasManager>();
         if (chosen == "Hamburger")
         {
             recipeIngredientNames = new List<string> { "Cheese", "Tomato", "Steak", "Toast" };
             copy = new List<string> { "Cheese", "Tomato", "Steak", "Toast" };
+        } else if (chosen == "Sushi")
+        {
+            recipeIngredientNames = new List<string> { "Shrimp", "Lettuce", "Rice" };
+            copy = new List<string> { "Shrimp", "Lettuce", "Rice" };
+        } else if (chosen == "Taco")
+        {
+            recipeIngredientNames = new List<string> { "Cheese", "Chicken", "Lettuce", "Toast" };
+            copy = new List<string> { "Cheese", "Chicken", "Lettuce", "Toast" };
+        } else if (chosen == "Donut")
+        {
+            recipeIngredientNames = new List<string> { "Toast", "Icecream", "Egg" };
+            copy = new List<string> { "Toast", "Icecream", "Egg" };
+        } else if (chosen == "Tempura")
+        {
+            recipeIngredientNames = new List<string> { "Egg", "Shrimp", "Toast"};
+            copy = new List<string> { "Egg", "Shrimp", "Toast" };
+        } else if (chosen == "Omelette")
+        {
+            recipeIngredientNames = new List<string> { "Egg", "Tomato", "Cheese", "Pepper" };
+            copy = new List<string> { "Egg", "Tomato", "Cheese", "Pepper" };
+        }
+        else if (chosen == "Mochi")
+        {
+            recipeIngredientNames = new List<string> { "Rice", "Icecream", "Cheese", "Wine" };
+            copy = new List<string> { "Rice", "Icecream", "Cheese", "Wine" };
         }
 
 
@@ -67,27 +100,49 @@ public class PotScript : MonoBehaviour
             }
             if (timer > 30)
             {
-                foreach (GameObject go in originalList)
+                foreach (string s in copy)
                 {
-                    DragNDrop dropScript = go.GetComponent<DragNDrop>();
-                    go.transform.position = dropScript.originalPosition;
+                    GameObject go = GameObject.Find(s);
+                    Destroy(go);
 
+                }
+                GameObject[] flames = GameObject.FindGameObjectsWithTag("Fire");
+                foreach (GameObject f in flames)
+                {
+                    Destroy(f);
                 }
 
                 if (chosen == "Hamburger")
                 {
-                    foreach (string s in copy)
-                    {
-                        GameObject go = GameObject.Find(s);
-                        Destroy(go);
-
-                    }
-                    GameObject[] flames = GameObject.FindGameObjectsWithTag("Fire");
-                    foreach (GameObject f in flames)
-                    {
-                        Destroy(f);
-                    }
                     Instantiate(Hamburger, transform.position + new Vector3(0, 1.5f, 0), Hamburger.transform.rotation);
+                    finalRecipe = true;
+                } else if (chosen == "Sushi")
+                {
+                    Instantiate(Sushi, transform.position + new Vector3(0, 1.5f, 0), Sushi.transform.rotation);
+                    finalRecipe = true;
+                } else if (chosen == "Taco")
+                {
+                    Instantiate(Taco, transform.position + new Vector3(0, 1.5f, 0), Taco.transform.rotation);
+                    finalRecipe = true;
+                }
+                else if (chosen == "Tempura")
+                {
+                    Instantiate(Tempura, transform.position + new Vector3(0, 1.5f, 0), Tempura.transform.rotation);
+                    finalRecipe = true;
+                }
+                else if (chosen == "Donut")
+                {
+                    Instantiate(Donut, transform.position + new Vector3(0, 1.5f, 0), Donut.transform.rotation);
+                    finalRecipe = true;
+                }
+                else if (chosen == "Omelette")
+                {
+                    Instantiate(Omelette, transform.position + new Vector3(0, 1.5f, 0), Omelette.transform.rotation);
+                    finalRecipe = true;
+                }
+                else if (chosen == "Mochi")
+                {
+                    Instantiate(Mochi, transform.position + new Vector3(0, 1.5f, 0), Mochi.transform.rotation);
                     finalRecipe = true;
                 }
             }

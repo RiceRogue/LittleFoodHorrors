@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 23000011875077590}
   - component: {fileID: -2250532301733564246}
   - component: {fileID: 6028596305465613797}
+  - component: {fileID: 4339979221240254131}
   m_Layer: 8
   m_Name: Egg
   m_TagString: Untagged
@@ -110,3 +111,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.15274109, y: 0.026138742, z: 0.103578866}
   m_Center: {x: 0, y: -0.000000005122274, z: 0.0000000037252903}
+--- !u!114 &4339979221240254131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000012343480272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c6ed17d762efe449bfdaa6920d28c5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseOverColor: {fileID: 2100000, guid: 91941fa71491b23409eb0f414d93b886, type: 2}
+  originalColor: {fileID: 0}
+  originalPosition: {x: 0, y: 0, z: 0}

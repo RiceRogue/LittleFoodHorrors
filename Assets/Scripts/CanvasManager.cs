@@ -30,7 +30,7 @@ public class CanvasManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(potter.chosen == "Hamburger" && recipeShown == false)
+        if(recipeShown == false)
         {
             recipeText.text = potter.chosen + "\n recipe \n";
             foreach(string ingredient in potter.copy)

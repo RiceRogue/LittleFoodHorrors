@@ -19,7 +19,7 @@ public class PlateScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        recipes = new List<string>() { "Burger(Clone)", "Maki(Clone)", "Tacos(Clone)" };
+        recipes = new List<string>() { "Burger(Clone)", "Maki(Clone)", "Tacos(Clone)", "Tempura(Clone)", "Mochi(Clone)", "Omelette(Clone)", "Donut(Clone)" };
         finished = false;
         canvas = canvasManager.GetComponent<CanvasManager>();
 
