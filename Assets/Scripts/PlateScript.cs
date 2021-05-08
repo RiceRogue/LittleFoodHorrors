@@ -13,11 +13,16 @@ public class PlateScript : MonoBehaviour
     public float timer;
 
     public bool finished;
+
+    public CanvasManager canvas;
+    public GameObject canvasManager;
     // Start is called before the first frame update
     void Start()
     {
         recipes = new List<string>() { "Burger(Clone)", "Maki(Clone)", "Tacos(Clone)" };
         finished = false;
+        canvas = canvasManager.GetComponent<CanvasManager>();
+
     }
 
     // Update is called once per frame
@@ -51,5 +56,16 @@ public class PlateScript : MonoBehaviour
     {
         timer = 0;
 
+    }
+
+    void OnMouseEnter()
+    {
+        canvas.plateHints.enabled = true;
+
+    }
+
+    void OnMouseExit()
+    {
+        canvas.plateHints.enabled = false;
     }
 }

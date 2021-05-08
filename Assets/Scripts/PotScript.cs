@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PotScript : MonoBehaviour
 {
@@ -20,6 +21,10 @@ public class PotScript : MonoBehaviour
     public GameObject Flames;
     public bool flameInstantiated;
 
+
+    public CanvasManager canvas;
+    public GameObject canvasManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,23 +35,25 @@ public class PotScript : MonoBehaviour
         recipeIngredientNames = new List<string>();
         chosen = recipes[Random.Range(0, recipes.Length)];
         chosen = "Hamburger";
+
+        canvas = canvasManager.GetComponent<CanvasManager>();
         if (chosen == "Hamburger")
         {
             recipeIngredientNames = new List<string> { "Cheese", "Tomato", "Steak", "Toast" };
             copy = new List<string> { "Cheese", "Tomato", "Steak", "Toast" };
         }
-        
+
 
     }
 
-    
+
 
     // Update is called once per frame
     void Update()
     {
-        
+
         //No gravity or rigidbody for the pot, due to erratic movement due to physics engine
-        if(recipeIngredientNames.Count == 0 && finalRecipe == false)
+        if (recipeIngredientNames.Count == 0 && finalRecipe == false)
         {
             timer += Time.deltaTime;
             //All Ingredients are currently colliding with the pot;
@@ -69,14 +76,14 @@ public class PotScript : MonoBehaviour
 
                 if (chosen == "Hamburger")
                 {
-                    foreach(string s in copy)
+                    foreach (string s in copy)
                     {
                         GameObject go = GameObject.Find(s);
                         Destroy(go);
-                        
+
                     }
                     GameObject[] flames = GameObject.FindGameObjectsWithTag("Fire");
-                    foreach(GameObject f in flames)
+                    foreach (GameObject f in flames)
                     {
                         Destroy(f);
                     }
@@ -84,9 +91,9 @@ public class PotScript : MonoBehaviour
                     finalRecipe = true;
                 }
             }
-        } 
-        
-        if(recipeIngredientNames.Count > 0)
+        }
+
+        if (recipeIngredientNames.Count > 0)
         {
             flameInstantiated = false;
             GameObject[] flames = GameObject.FindGameObjectsWithTag("Fire");
@@ -95,7 +102,7 @@ public class PotScript : MonoBehaviour
                 Destroy(f);
             }
         }
-        
+
     }
 
     void OnCollisionEnter(Collision collision)
@@ -103,7 +110,8 @@ public class PotScript : MonoBehaviour
         bool removing = false;
         foreach (string name in recipeIngredientNames)
         {
-            if (name == collision.gameObject.name){
+            if (name == collision.gameObject.name)
+            {
                 removing = true;
             }
 
@@ -154,5 +162,14 @@ public class PotScript : MonoBehaviour
     }
 
 
+    void OnMouseEnter()
+    {
+        canvas.potHints.enabled = true;
 
+    }
+
+    void OnMouseExit()
+    {
+        canvas.potHints.enabled = false;
+    }
 }
