@@ -42,7 +42,7 @@ public class PotScript : MonoBehaviour
         recipes = new string[7] { "Hamburger", "Sushi", "Taco", "Donut", "Tempura", "Omelette", "Mochi" };
         recipeIngredientNames = new List<string>();
         //Taken from forum on how to better generate random seeds, https://answers.unity.com/questions/603000/generating-a-good-random-seed.html
-        Random.seed = (int)System.DateTime.Now.Ticks;
+        
         chosen = recipes[Random.Range(0, recipes.Length)];
         
 
@@ -92,14 +92,14 @@ public class PotScript : MonoBehaviour
         {
             timer += Time.deltaTime;
             //begins image timer
-            //canvas.maxTime = 30;
-            //canvas.reloading = true;
+            canvas.maxTime = 30;
+            canvas.reloading = true;
             
             //All Ingredients are currently colliding with the pot;
             if (flameInstantiated == false)
             {
-                canvas.maxTime = 30;
-                canvas.reloading = true;
+                //canvas.maxTime = 30;
+                //canvas.reloading = true;
                 for (int i = 0; i < 3; i++)
                 {
                     Instantiate(Flames, transform.position + new Vector3(i - 1, -2, 0), transform.rotation);

@@ -37,6 +37,7 @@ public class PlateScript : MonoBehaviour
             canvas.reloading = true;
             if (timer > canvas.maxTime)
             {
+                canvas.timerBar.enabled = false;
                 SceneManager.LoadScene("SampleScene");
             }
         }

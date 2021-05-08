@@ -39,6 +39,7 @@ public class CanvasManager : MonoBehaviour
         timeLeft = 0;
         maxTime = 0;
         timerBar = timerBar.GetComponent<Image>();
+        Debug.Log(timerBar);
         timerBar.enabled = false;
         timerBar.fillAmount = 0f;
         reloading = false;
@@ -87,7 +88,6 @@ public class CanvasManager : MonoBehaviour
         if (reloading == true)
         {
             timerBar.enabled = true;
-            timerBar.fillAmount = 0.5f;
             if (timeLeft < maxTime)
             {
                 timeLeft += Time.deltaTime;

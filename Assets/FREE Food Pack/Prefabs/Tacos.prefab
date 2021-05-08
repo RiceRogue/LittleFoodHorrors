@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: -5284349440811907371}
   - component: {fileID: 6448966071034096176}
   - component: {fileID: 651629765270540776}
-  - component: {fileID: -790664946114478159}
   m_Layer: 10
   m_Name: Tacos
   m_TagString: Untagged
@@ -127,18 +126,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.1773822, y: 0.0306401, z: 0.09113876}
   m_Center: {x: 0, y: 0.0000000060535967, z: 0}
---- !u!114 &-790664946114478159
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000011323704582}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c6ed17d762efe449bfdaa6920d28c5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mouseOverColor: {fileID: 0}
-  originalColor: {fileID: 0}
-  originalPosition: {x: 0, y: 0, z: 0}
