@@ -12,15 +12,23 @@ public class DragNDrop : MonoBehaviour
     private float distance;
 
     public Vector3 originalPosition;
+    public Quaternion originalRotation;
 
+    public bool stole;
+
+    public GameObject kiwiMonster;
+    public GameObject hole;
     void Start()
     {
         originalColor = GetComponent<Renderer>().material;
+        stole = false;
+        kiwiMonster = GameObject.Find("KiwiMonster");
     }
 
     private void Awake()
     {
         originalPosition = transform.position;
+        originalRotation = transform.rotation;
     }
 
     // Update is called once per frame
@@ -34,11 +42,24 @@ public class DragNDrop : MonoBehaviour
             transform.position = rayPoint;
         }
 
+        if (stole)
+        {
+            kiwiMonster.GetComponent<KiwiReset>().hasObject = true;
+            transform.rotation = originalRotation;
+            transform.position = kiwiMonster.transform.position + new Vector3(0, 7, 0);
+        }
+
+        
+            
+        
+
+
     }
 
     private void OnMouseOver()
     {
-        if(Input.GetMouseButtonDown(0)){
+        if (Input.GetMouseButtonDown(0))
+        {
             //COMMENT GITHUB TEST
 
             //pulled from user Tobias J on unity forum. 
@@ -46,9 +67,16 @@ public class DragNDrop : MonoBehaviour
             //Essentially drags an object based on mouse enter and exit events, while adjusting the mouse position in relation to the screen. 
             distance = Vector3.Distance(transform.position, Camera.main.transform.position);
             dragging = true;
-        } else if (Input.GetMouseButtonUp(0))
+            stole = false;
+            kiwiMonster.GetComponent<KiwiReset>().hasObject = false;
+            kiwiMonster.GetComponent<KiwiReset>().goHome = false;
+            kiwiMonster.GetComponent<KiwiReset>().reset = true;
+        }
+        else if (Input.GetMouseButtonUp(0))
         {
             dragging = false;
+            stole = false;
+
         }
     }
 
@@ -59,5 +87,26 @@ public class DragNDrop : MonoBehaviour
     void OnMouseExit()
     {
         GetComponent<Renderer>().material = originalColor;
+    }
+
+
+    void OnCollisionEnter(Collision collision)
+    {
+        //specifically the kiwi monster layer
+        if (collision.gameObject.layer == 11 && collision.gameObject.GetComponent<KiwiReset>().hasObject == false)
+        {
+            stole = true;
+            collision.gameObject.GetComponent<KiwiReset>().hasObject = true;
+            collision.gameObject.GetComponent<KiwiReset>().goHome = true;
+
+
+        }
+
+        //hole layer
+        if(collision.gameObject.layer == 9)
+        {
+            transform.rotation = originalRotation;
+            transform.position = originalPosition;
+        }
     }
 }

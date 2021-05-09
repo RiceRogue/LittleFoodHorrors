@@ -11,6 +11,7 @@ public class PlateScript : MonoBehaviour
 
     public List<string> recipeIngredientNames;
     public float timer;
+    public float timer2;
 
     public bool finished;
 
@@ -32,6 +33,15 @@ public class PlateScript : MonoBehaviour
         if(finished == true)
         {
             timer += Time.deltaTime;
+
+            //funny cute eating text to show that you are eating every second the food is on the plate.
+            canvas.omnom.enabled = true;
+            timer2 += Time.deltaTime;
+            if (timer2 > 1)
+            {
+                canvas.omnom.text += "\n Om Nom";
+                timer2 = 0;
+            }
             //begins image timer
             canvas.maxTime = 10;
             canvas.reloading = true;

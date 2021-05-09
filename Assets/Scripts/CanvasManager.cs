@@ -11,6 +11,8 @@ public class CanvasManager : MonoBehaviour
     public TextMeshProUGUI potHints;
     public TextMeshProUGUI plateHints;
 
+    public TextMeshProUGUI omnom;
+
 
     public GameObject pot;
     public PotScript potter;
@@ -29,6 +31,7 @@ public class CanvasManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        omnom.enabled = false;
         potter = pot.GetComponent<PotScript>();
         recipeShown = false;
         recipeEnd = false;
@@ -39,7 +42,7 @@ public class CanvasManager : MonoBehaviour
         timeLeft = 0;
         maxTime = 0;
         timerBar = timerBar.GetComponent<Image>();
-        Debug.Log(timerBar);
+
         timerBar.enabled = false;
         timerBar.fillAmount = 0f;
         reloading = false;

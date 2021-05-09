@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class KiwiScript : MonoBehaviour
+public class KiwiFloorScript : MonoBehaviour
 {
     public float timer;
     public List<GameObject> FloorIngredients;
@@ -12,28 +12,26 @@ public class KiwiScript : MonoBehaviour
     public bool beginWalk;
     public bool beginSteal;
 
-    public GameObject target;
 
     public float moveSpeed;
 
     public GameObject kiwi;
     public NavMeshAgent agent;
-
+    public bool following;
     // Start is called before the first frame update
     void Start()
     {
         timer = 0;
-        moveSpeed = 3f;
-        target = GameObject.Find("KiwiHole");
+        moveSpeed = 5f;
         FloorIngredients = new List<GameObject>();
         agent = kiwi.GetComponent<NavMeshAgent>();
-
+        following = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     void OnCollisionEnter(Collision collision)
@@ -43,14 +41,24 @@ public class KiwiScript : MonoBehaviour
         {
             FloorIngredients.Add(collision.gameObject);
             ingredient = FloorIngredients[Random.Range(0, FloorIngredients.Count)];
+
+           
+        }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (FloorIngredients.Count > 0 && GameObject.Find("KiwiMonster").GetComponent<KiwiReset>().hasObject == false)
+        {
+            GameObject.Find("KiwiMonster").GetComponent<KiwiReset>().reset = false;
+            GameObject.Find("KiwiMonster").GetComponent<BoxCollider>().enabled = true;
             agent.SetDestination(ingredient.transform.position);
 
-            if (Vector3.Distance(kiwi.transform.position, ingredient.transform.position) < 2)
-            {
-                ingredient.transform.position = Vector3.Lerp(ingredient.transform.position, kiwi.transform.position, Time.deltaTime * moveSpeed);
-                agent.SetDestination(target.transform.position);
-
-            }
         }
+    }
+
+    void OnCollisionExit(Collision collision)
+    {
+        FloorIngredients.Remove(collision.gameObject);
     }
 }
