@@ -15,14 +15,19 @@ public class DragNDrop : MonoBehaviour
     public Quaternion originalRotation;
 
     public bool stole;
+    public bool respawn;
 
     public GameObject kiwiMonster;
     public GameObject hole;
+
+    public float timer;
     void Start()
     {
         originalColor = GetComponent<Renderer>().material;
         stole = false;
         kiwiMonster = GameObject.Find("KiwiMonster");
+        respawn = false;
+        timer = 0;
     }
 
     private void Awake()
@@ -49,7 +54,18 @@ public class DragNDrop : MonoBehaviour
             transform.position = kiwiMonster.transform.position + new Vector3(0, 7, 0);
         }
 
-        
+        if (respawn)
+        {
+            gameObject.GetComponent<MeshRenderer>().enabled = false;
+            timer += Time.deltaTime;
+            if(timer > 5)
+            {
+                
+                gameObject.GetComponent<MeshRenderer>().enabled = true;
+                timer = 0;
+                respawn = false;
+            }
+        }
             
         
 
@@ -107,6 +123,7 @@ public class DragNDrop : MonoBehaviour
         {
             transform.rotation = originalRotation;
             transform.position = originalPosition;
+            respawn = true;
         }
     }
 }
