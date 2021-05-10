@@ -13,6 +13,8 @@ public class PlateScript : MonoBehaviour
     public float timer;
     public float timer2;
 
+    public float timer3Final;
+
     public bool finished;
 
     public CanvasManager canvas;
@@ -39,7 +41,7 @@ public class PlateScript : MonoBehaviour
             timer2 += Time.deltaTime;
             if (timer2 > 1)
             {
-                canvas.omnom.text += "\n Om Nom";
+                canvas.omnom.text += "\nOm Nom";
                 timer2 = 0;
             }
             //begins image timer
@@ -47,8 +49,20 @@ public class PlateScript : MonoBehaviour
             canvas.reloading = true;
             if (timer > canvas.maxTime)
             {
-                canvas.timerBar.enabled = false;
-                SceneManager.LoadScene("SampleScene");
+                //Display final score before waiting to restart level
+                canvas.reloading = false;
+
+                canvas.HighScore.enabled = true;
+                canvas.omnom.enabled = false;
+                
+                canvas.scoring = false;
+                timer3Final += Time.deltaTime;
+                canvas.HighScore.text = "Congratulations, you made your meal in " + canvas.timeScored.ToString("F2") + " seconds";
+
+                if (timer3Final > 8)
+                {
+                    SceneManager.LoadScene("SampleScene");
+                }
             }
         }
     }

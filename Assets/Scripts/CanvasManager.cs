@@ -13,6 +13,11 @@ public class CanvasManager : MonoBehaviour
 
     public TextMeshProUGUI omnom;
 
+    public TextMeshProUGUI timeScore;
+    public TextMeshProUGUI HighScore;
+    public bool scoring;
+
+
 
     public GameObject pot;
     public PotScript potter;
@@ -28,6 +33,9 @@ public class CanvasManager : MonoBehaviour
     public bool reloading;
 
     public float filler;
+
+    public float timeScored;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,12 +54,23 @@ public class CanvasManager : MonoBehaviour
         timerBar.enabled = false;
         timerBar.fillAmount = 0f;
         reloading = false;
+        timeScored = 0;
+
+        scoring = true;
+        HighScore.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (scoring == true)
+        {
+            //timer as a form of score;
+            timeScored += Time.deltaTime;
+            timeScore.text = "TimeScore: " + timeScored.ToString("F2");
+        }
 
+        //Show FUnny omnom Text
         filler = timerBar.fillAmount;
         if(recipeShown == false)
         {

@@ -98,8 +98,7 @@ public class PotScript : MonoBehaviour
             //All Ingredients are currently colliding with the pot;
             if (flameInstantiated == false)
             {
-                //canvas.maxTime = 30;
-                //canvas.reloading = true;
+                
                 for (int i = 0; i < 3; i++)
                 {
                     Instantiate(Flames, transform.position + new Vector3(i - 1, -2, 0), transform.rotation);
@@ -108,6 +107,7 @@ public class PotScript : MonoBehaviour
             }
             if (timer > 30)
             {
+                //Destroys objects in the pot and then the flames, before spawning the specific meal you made. 
                 foreach (string s in copy)
                 {
                     GameObject go = GameObject.Find(s);

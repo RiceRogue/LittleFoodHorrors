@@ -48,6 +48,7 @@ public class KiwiFloorScript : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
+        //Adds to a list of ingredients on the floor. Kiwi monster chooses a random one and will go to grab it. 
         if (FloorIngredients.Count > 0 && GameObject.Find("KiwiMonster").GetComponent<KiwiReset>().hasObject == false)
         {
             GameObject.Find("KiwiMonster").GetComponent<KiwiReset>().reset = false;

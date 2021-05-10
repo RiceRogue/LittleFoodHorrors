@@ -25,11 +25,14 @@ public class KiwiReset : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Goes to the black hole.
         if (goHome == true)
         {
             GetComponent<NavMeshAgent>().SetDestination(target.transform.position);
         }
 
+
+        //Resets its position before trying to get another floor ingredient
         if(reset == true)
         {
             GetComponent<BoxCollider>().enabled = false;
