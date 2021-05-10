@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ingredients
   - Fire
+  - Throw
   layers:
   - Default
   - TransparentFX
@@ -19,9 +20,9 @@ TagManager:
   - Hole
   - Meals
   - KiwiMonster
-  - 
-  - 
-  - 
+  - TrueHole
+  - Throwables
+  - Floor
   - 
   - 
   - 

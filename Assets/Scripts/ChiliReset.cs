@@ -20,6 +20,8 @@ public class ChiliReset : MonoBehaviour
     public bool stealing;
     public bool traveling;
 
+    public CanvasManager canvas;
+    public GameObject canvasManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,19 +34,30 @@ public class ChiliReset : MonoBehaviour
         reset = false;
         stealing = false;
         traveling = false;
+
+        canvas = canvasManager.GetComponent<CanvasManager>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        target.transform.position = kiwi.transform.position + new Vector3(0,50,0);
-
+        target.transform.position = kiwi.transform.position + new Vector3(0,45,0);
+        
         timer += Time.deltaTime;
         transform.rotation = originalRotation;
 
         if (timer > 30)
         {
             ingredient = ingredients[Random.Range(0, ingredients.Length)];
+            //in case the chili is trying to grab the same object that the kiwi monster has in his hand. 
+            if(ingredient.name == kiwi.GetComponent<KiwiReset>().objectsGrabbed[kiwi.GetComponent<KiwiReset>().objectsGrabbed.Count - 1])
+            {
+                for (int i = 0; i < 100; i++)
+                {
+                    ingredient = ingredients[Random.Range(0, ingredients.Length)];
+                }
+            }
             reset = false;
             stealing = true;
             timer = 0;
@@ -111,6 +124,16 @@ public class ChiliReset : MonoBehaviour
         }
     }
 
+    //Display Hint when mouse is over
+    void OnMouseEnter()
+    {
+        canvas.chiliHints.enabled = true;
 
+    }
+
+    void OnMouseExit()
+    {
+        canvas.chiliHints.enabled = false;
+    }
 
 }

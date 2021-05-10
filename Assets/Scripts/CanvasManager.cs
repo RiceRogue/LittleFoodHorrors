@@ -10,6 +10,10 @@ public class CanvasManager : MonoBehaviour
     public TextMeshProUGUI recipeText;
     public TextMeshProUGUI potHints;
     public TextMeshProUGUI plateHints;
+    public TextMeshProUGUI kiwiHints;
+    public TextMeshProUGUI chiliHints;
+    public TextMeshProUGUI eggyHints;
+
 
     public TextMeshProUGUI omnom;
 
@@ -46,6 +50,10 @@ public class CanvasManager : MonoBehaviour
         timer = 0;
         potHints.enabled = false;
         plateHints.enabled = false;
+        kiwiHints.enabled = false;
+        chiliHints.enabled = false;
+        eggyHints.enabled = false;
+
 
         timeLeft = 0;
         maxTime = 0;

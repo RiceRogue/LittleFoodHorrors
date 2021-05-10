@@ -7,17 +7,22 @@ using UnityEngine.AI;
 public class KiwiReset : MonoBehaviour
 {
     public GameObject target;
+    public List<string> objectsGrabbed;
     public bool goHome;
     public bool hasObject;
     public bool reset;
     public float timer;
     public Vector3 originalPosition;
 
+    public CanvasManager canvas;
+    public GameObject canvasManager;
     // Start is called before the first frame update
     void Start()
     {
         timer = 0;
-
+        canvas = canvasManager.GetComponent<CanvasManager>();
+        objectsGrabbed = new List<string>();
+        objectsGrabbed.Add("Test");
         goHome = false;
         originalPosition = transform.position;
     }
@@ -57,17 +62,25 @@ public class KiwiReset : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        //Target Hole Layer = 9
-        if (collision.gameObject.layer == 9)
+        //Target Hole Layer = 12
+        if (collision.gameObject.layer == 12)
         {
             reset = true;
             goHome = false;
-            
             GetComponent<BoxCollider>().enabled = false;
         }
 
+    }
 
+    //Display Hint when mouse is over
+    void OnMouseEnter()
+    {
+        canvas.kiwiHints.enabled = true;
 
+    }
 
+    void OnMouseExit()
+    {
+        canvas.kiwiHints.enabled = false;
     }
 }
