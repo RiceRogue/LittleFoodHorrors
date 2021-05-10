@@ -71,7 +71,9 @@ public class KiwiFloorScript : MonoBehaviour
             {
                 eReset.listThrow.Add(collision.gameObject);
 
+                collision.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0,0,0);
                 collision.gameObject.transform.position = collision.gameObject.GetComponent<DragNDrop>().originalPosition;
+                collision.gameObject.transform.rotation = collision.gameObject.GetComponent<DragNDrop>().originalRotation;
                 timer = 0;
             }
         }

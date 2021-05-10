@@ -53,11 +53,14 @@ public class ChiliReset : MonoBehaviour
         {
             ingredient = ingredients[Random.Range(0, ingredients.Length)];
             //in case the chili is trying to grab the same object that the kiwi monster has in his hand. 
-            if(ingredient.name == kiwi.GetComponent<KiwiReset>().objectsGrabbed[kiwi.GetComponent<KiwiReset>().objectsGrabbed.Count - 1])
+            if (kiwi.GetComponent<KiwiReset>().objectsGrabbed.Count > 0)
             {
-                for (int i = 0; i < 100; i++)
+                if (ingredient.name == kiwi.GetComponent<KiwiReset>().objectsGrabbed[kiwi.GetComponent<KiwiReset>().objectsGrabbed.Count - 1])
                 {
-                    ingredient = ingredients[Random.Range(0, ingredients.Length)];
+                    for (int i = 0; i < 100; i++)
+                    {
+                        ingredient = ingredients[Random.Range(0, ingredients.Length)];
+                    }
                 }
             }
             reset = false;

@@ -112,6 +112,7 @@ public class DragNDrop : MonoBehaviour
         if (collision.gameObject.layer == 11 && collision.gameObject.GetComponent<KiwiReset>().hasObject == false && this.gameObject.layer ==8)
         {
             stole = true;
+
             collision.gameObject.GetComponent<KiwiReset>().hasObject = true;
             collision.gameObject.GetComponent<KiwiReset>().goHome = true;
             collision.gameObject.GetComponent<KiwiReset>().objectsGrabbed.Add(transform.name);

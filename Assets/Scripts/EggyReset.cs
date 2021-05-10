@@ -51,10 +51,18 @@ public class EggyReset : MonoBehaviour
 
         if (timer > 40)
         {
-            throwing = listThrow[Random.Range(0, throwings.Length-1)];
-            reset = false;
-            toss = true;
-            timer = 0;
+            if (listThrow.Count > 0)
+            {
+                throwing = listThrow[Random.Range(0, throwings.Length - 1)];
+                reset = false;
+                toss = true;
+                timer = 0;
+            } else
+            {
+                reset = true;
+                toss = false;
+                timer = 0;
+            }
         }
 
         if (toss)
@@ -88,7 +96,7 @@ public class EggyReset : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == throwing.name)
+        if (collision.gameObject.name == throwing.name && listThrow.Count > 0)
         {
             collision.gameObject.transform.rotation = collision.gameObject.GetComponent<DragNDrop>().originalRotation;
             listThrow.Remove(collision.gameObject);
