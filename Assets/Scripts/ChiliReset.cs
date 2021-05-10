@@ -9,6 +9,7 @@ public class ChiliReset : MonoBehaviour
     public GameObject[] ingredients;
     public GameObject target;
     public GameObject ingredient;
+    public GameObject kiwi;
     public float timer;
     public float moveSpeed;
     public Vector3 originalPosition;
@@ -24,6 +25,7 @@ public class ChiliReset : MonoBehaviour
     {
         timer = 0;
         ingredients = GameObject.FindGameObjectsWithTag("Ingredients");
+        kiwi = GameObject.Find("KiwiMonster");
         moveSpeed = 1.2f;
         originalPosition = transform.position;
         originalRotation = transform.rotation;
@@ -35,6 +37,8 @@ public class ChiliReset : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        target.transform.position = kiwi.transform.position + new Vector3(0,50,0);
+
         timer += Time.deltaTime;
         transform.rotation = originalRotation;
 
