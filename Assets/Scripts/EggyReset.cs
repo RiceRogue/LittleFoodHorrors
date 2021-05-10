@@ -49,7 +49,7 @@ public class EggyReset : MonoBehaviour
         timer += Time.deltaTime;
         
 
-        if (timer > 45)
+        if (timer > 40)
         {
             throwing = listThrow[Random.Range(0, throwings.Length-1)];
             reset = false;
@@ -73,8 +73,10 @@ public class EggyReset : MonoBehaviour
             timer2 += Time.deltaTime;
             if (timer2 > 3)
             {
-                tossit = false;
                 reset = true;
+                timer2 = 0;
+                tossit = false;
+                
             }
         }
 

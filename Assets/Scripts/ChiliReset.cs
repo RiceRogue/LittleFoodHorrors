@@ -22,6 +22,8 @@ public class ChiliReset : MonoBehaviour
 
     public CanvasManager canvas;
     public GameObject canvasManager;
+    public GameObject colliding;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +36,7 @@ public class ChiliReset : MonoBehaviour
         reset = false;
         stealing = false;
         traveling = false;
-
+        
         canvas = canvasManager.GetComponent<CanvasManager>();
 
     }
@@ -102,6 +104,9 @@ public class ChiliReset : MonoBehaviour
             traveling = true;
             stealing = false;
             timer = 0;
+            colliding = collision.gameObject;
+            collision.gameObject.GetComponent<BoxCollider>().enabled = false;
+
         }
 
 
@@ -111,6 +116,7 @@ public class ChiliReset : MonoBehaviour
             timer = 0;
             reset = true;
             traveling = false;
+            colliding.GetComponent<BoxCollider>().enabled = true;
         }
     }
 

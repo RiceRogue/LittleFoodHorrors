@@ -51,7 +51,8 @@ public class PlateScript : MonoBehaviour
             {
                 //Display final score before waiting to restart level
                 canvas.reloading = false;
-
+                canvas.timerBar.fillAmount = 0;
+                canvas.timerBar.enabled = false;
                 canvas.HighScore.enabled = true;
                 canvas.omnom.enabled = false;
                 

@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     public float moveSpeed;
+    public float timer;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +15,18 @@ public class CameraMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //If camera is hit by an object
+        if(GetComponent<Rigidbody>().velocity.x > 0 || GetComponent<Rigidbody>().velocity.y > 0 || GetComponent<Rigidbody>().velocity.z > 0)
+        {
+            //kind of like getting stunned
+            timer += Time.deltaTime;
+            if (timer > 3)
+            {
+                GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+                timer = 0;
+            }
+
+        }
         GetComponent<Rigidbody>().velocity = new Vector3(0,0,0);
         transform.Translate(Vector3.forward * Time.deltaTime * Input.GetAxis("Vertical") * moveSpeed);
         
