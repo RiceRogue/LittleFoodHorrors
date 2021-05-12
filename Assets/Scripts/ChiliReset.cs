@@ -88,17 +88,14 @@ public class ChiliReset : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, target.transform.position, Time.deltaTime * moveSpeed);
             ingredient.transform.position = transform.position + new Vector3(0, -1, 0);
         }
-    }
 
-
-    private void FixedUpdate()
-    {
         //Stealing the ingredients
         if (stealing == true)
-        {            
+        {
             transform.position = Vector3.Lerp(transform.position, ingredient.transform.position, Time.deltaTime * moveSpeed);
         }
     }
+
 
     void OnCollisionEnter(Collision collision)
     {

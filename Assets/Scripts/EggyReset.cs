@@ -30,6 +30,8 @@ public class EggyReset : MonoBehaviour
         timer2 = 0;
         tossit = false;
         listThrow = new List<GameObject>();
+
+        //Transition from array to array list
         throwings = GameObject.FindGameObjectsWithTag("Throw");
         foreach(GameObject go in throwings)
         {
@@ -53,7 +55,7 @@ public class EggyReset : MonoBehaviour
         {
             if (listThrow.Count > 0)
             {
-                throwing = listThrow[Random.Range(0, throwings.Length - 1)];
+                throwing = listThrow[Random.Range(0, listThrow.Count - 1)];
                 reset = false;
                 toss = true;
                 timer = 0;
