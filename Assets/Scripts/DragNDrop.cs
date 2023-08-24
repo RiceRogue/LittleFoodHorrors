@@ -21,6 +21,8 @@ public class DragNDrop : MonoBehaviour
     public GameObject hole;
 
     public float timer;
+
+    public AudioSource sfx;
     void Start()
     {
         originalColor = GetComponent<Renderer>().material;
@@ -28,6 +30,7 @@ public class DragNDrop : MonoBehaviour
         kiwiMonster = GameObject.Find("KiwiMonster");
         respawn = false;
         timer = 0;
+        sfx = GetComponent<AudioSource>();  
     }
 
     private void Awake()
@@ -87,11 +90,14 @@ public class DragNDrop : MonoBehaviour
             kiwiMonster.GetComponent<KiwiReset>().hasObject = false;
             kiwiMonster.GetComponent<KiwiReset>().goHome = false;
             kiwiMonster.GetComponent<KiwiReset>().reset = true;
+            sfx.Play();
+
         }
         else if (Input.GetMouseButtonUp(0))
         {
             dragging = false;
             stole = false;
+            sfx.Play();
 
         }
     }
